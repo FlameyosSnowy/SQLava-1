@@ -16,9 +16,8 @@ public class InsertQuery implements Query {
     private boolean onDuplicateKey = false;
 
     public InsertQuery(String table) {
-        this.table = table;
+        this.table = '`' + table + '`';;
     }
-
 
     public InsertQuery value(String column, String value) {
         values.put(column, value);

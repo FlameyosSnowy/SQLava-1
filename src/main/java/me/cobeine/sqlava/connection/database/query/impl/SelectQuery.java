@@ -20,9 +20,8 @@ public class SelectQuery implements Query {
     private int limitRowCount = 0;
 
     public SelectQuery(String table) {
-        this.table = table;
+        this.table = '`' + table + '`';;
     }
-
 
     public SelectQuery column(String column) {
         columns.add(column);
@@ -34,12 +33,12 @@ public class SelectQuery implements Query {
     }
 
     public SelectQuery where(String expression) {
-        wheres.add(expression + "=?");
+        wheres.add(expression + "= ?");
         return this;
     }
     public SelectQuery where(String... expression) {
         for (String s : expression) {
-            wheres.add(s + "=?");
+            wheres.add(s + "= ?");
         }
         return this;
     }
@@ -83,7 +82,7 @@ public class SelectQuery implements Query {
 
         else builder.append("SELECT ").append(separate(columns)).append(" FROM ").append(table);
 
-        if (wheres.size() > 0)
+        if (!wheres.isEmpty())
             builder.append(" WHERE ").append(separate(wheres, " AND "));
 
         if (orderBy != null)
@@ -91,7 +90,6 @@ public class SelectQuery implements Query {
 
         if (limitRowCount > 0)
             builder.append(" LIMIT ").append(limitOffset).append(",").append(limitRowCount);
-
 
         return builder.toString();
     }

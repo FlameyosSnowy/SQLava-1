@@ -12,8 +12,9 @@ import java.util.List;
 public class DeleteQuery implements Query {
     private final String table;
     private final List<String> wheres = new ArrayList<>();
+
     public DeleteQuery(String table) {
-        this.table = table;
+        this.table = '`' + table + '`';;
     }
 
     public DeleteQuery where(String expression) {

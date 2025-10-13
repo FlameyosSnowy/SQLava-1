@@ -17,7 +17,7 @@ public class UpdateQuery implements Query {
     private final List<String> wheres = new ArrayList<>();
 
     public UpdateQuery(String table) {
-        this.table = table;
+        this.table = '`' + table + '`';
     }
 
     public UpdateQuery setMultiple(String... column) {
@@ -65,7 +65,6 @@ public class UpdateQuery implements Query {
 
         String seperator = "";
         for (Map.Entry<String, String> entry : values.entrySet()) {
-
             String column = entry.getKey();
             String value = entry.getValue();
             builder.append(seperator)
