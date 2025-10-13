@@ -15,7 +15,7 @@ public enum BasicMySQLCredentials implements CredentialsKey {
     TIMEZONE("serverTimezone", String.class,true),
     USERNAME("user", String.class,true),
     PASSWORD("password", String.class,true),
-    MAX_LIFETIME("maximumLifetime", Integer.class,true),
+    MAX_LIFETIME("maximumLifetime", Long.class,true),
     DATASOURCE_CLASS_NAME("dataSourceClassName", String.class,false),
     DRIVER("JdbcDriver", String.class,false),
     POOL_SIZE("poolSize", Integer.class,false),
